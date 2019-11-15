@@ -5,26 +5,6 @@ import 'package:brix_flix/screen/main_view.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final ThemeData kIOSTheme = new ThemeData(
-    primarySwatch: Colors.brown,
-    primaryColor: Colors.grey[50],
-    primaryColorBrightness: Brightness.light,
-    fontFamily: 'Montserrat',
-  );
-
-  final ThemeData kDefaultTheme = new ThemeData(
-    primarySwatch: Colors.blue,
-    primaryColor: Colors.black,
-    accentColor: Colors.black,
-    brightness: Brightness.light,
-    fontFamily: 'Montserrat',
-    primaryTextTheme: TextTheme(
-      title: TextStyle(
-        color: Colors.black
-      )
-    )
-  );
-  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

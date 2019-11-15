@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MoviesCard extends StatelessWidget {
+  final movie;
+  MoviesCard(this.movie);
+
   @override
   Widget build (BuildContext context) {
     return InkWell(
@@ -22,7 +25,7 @@ class MoviesCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                        'https://dgeiu3fz282x5.cloudfront.net/g/l/l-245099.jpg'),
+                        movie.imagePath),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -34,13 +37,13 @@ class MoviesCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text('Movies',
+                  Text(movie.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24
                     ),
                   ),
-                  Text('Action, Sci-Fi'),
+                  Text(movie.tags),
                 ],
               ),
             ),

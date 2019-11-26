@@ -18,6 +18,9 @@ environment:
 
 dependencies:
   flutter_swiper : ^1.1.6
+  loading: ^1.0.1
+  youtube_player_flutter: ^6.0.3+2
+  smooth_star_rating: 1.0.3
   flutter:
     sdk: flutter
 

@@ -1,3 +1,4 @@
+import 'package:brix_flix/screen/cinemas_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:brix_flix/screen/main_view.dart';
@@ -40,10 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     MainView(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    CinemaList(),
   ];
 
   void _onItemTapped(int index) {

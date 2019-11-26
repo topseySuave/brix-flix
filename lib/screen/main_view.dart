@@ -99,7 +99,7 @@ class MainView extends StatelessWidget {
               containerHeight: 350,
               // containerWidth: MediaQuery.of(context).size.width,
               itemBuilder: (BuildContext context, int index){
-               return MoviesCard(category.movies[index]);
+               return MoviesCard(movie: category.movies[index]);
               },
               itemCount: category.movies.length,
 
@@ -108,7 +108,7 @@ class MainView extends StatelessWidget {
               autoplayDisableOnInteraction: true,
 
               loop: false,
-              viewportFraction: .87,
+              viewportFraction: .8,
               scale: 0.8,
             ),
           ),
@@ -119,42 +119,42 @@ class MainView extends StatelessWidget {
 
 
         // This should be from the list available sections
-        Flexible(
-          child: Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-                child: Text('Coming soon',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Flexible(
+        //   child: Row(
+        //     children: <Widget>[
+        //       Padding(
+        //         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+        //         child: Text('Coming soon',
+        //           textAlign: TextAlign.left,
+        //           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
 
 
-        Flexible(
-          child: SizedBox(
-            height: 350.0,
-            child: Swiper(
-              containerHeight: 350,
-              itemBuilder: (BuildContext context,int index){
-               return MoviesCard(category.movies[index]);
-              },
-              itemCount: category.movies.length,
+        // Flexible(
+        //   child: SizedBox(
+        //     height: 350.0,
+        //     child: Swiper(
+        //       containerHeight: 350,
+        //       itemBuilder: (BuildContext context,int index){
+        //        return MoviesCard(movie: category.movies[index], isSmaller: true);
+        //       },
+        //       itemCount: category.movies.length,
 
-              autoplay: true,
-              autoplayDelay: 5000,
-              autoplayDisableOnInteraction: true,
+        //       autoplay: true,
+        //       autoplayDelay: 5000,
+        //       autoplayDisableOnInteraction: true,
 
-              loop: false,
-              viewportFraction: .7,
-              scale: 1,
+        //       loop: false,
+        //       viewportFraction: .7,
+        //       scale: 1,
 
-            ),
-          ),
-        ),
+        //     ),
+        //   ),
+        // ),
 
 
 

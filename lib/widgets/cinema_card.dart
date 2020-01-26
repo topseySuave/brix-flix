@@ -45,7 +45,8 @@ class CinemaCard extends StatelessWidget {
               Positioned(
                 bottom: 20.0,
                 left: 20.0,
-                child: Text('hello',
+                child: Text(
+                  'hello',
                   style: TextStyle(
                     color: Colors.white,
                   ),

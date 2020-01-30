@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-// import 'package:youtube_player/youtube_player.dart';
 
 class VideoScreen extends StatefulWidget {
   final String videoId;
@@ -16,6 +14,7 @@ class VideoScreen extends StatefulWidget {
 class _VideoScreenState extends State<VideoScreen> {
   final String videoId;
   final String title;
+  bool isLoading = true;
 
   _VideoScreenState({this.videoId, this.title: ''});
   YoutubePlayerController _controller;
@@ -24,7 +23,7 @@ class _VideoScreenState extends State<VideoScreen> {
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: 'iLnmTe5Q2Qw',
+      initialVideoId: 'ByARC5QrZV4',
       flags: YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
@@ -37,8 +36,6 @@ class _VideoScreenState extends State<VideoScreen> {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        // brightness: Brightness.light,
-        backgroundColor: Colors.black38,
         elevation: 0,
         iconTheme: IconThemeData(
           color: Colors.white
@@ -47,7 +44,6 @@ class _VideoScreenState extends State<VideoScreen> {
       ),
 
       body: Container(
-      // decoration: new BoxDecoration(color: Colors.black45),
         child: Center(
           child: YoutubePlayer(
             controller: _controller,
@@ -57,9 +53,8 @@ class _VideoScreenState extends State<VideoScreen> {
               playedColor: Colors.amber,
               handleColor: Colors.amberAccent,
             ),
-            onReady: () => {
-              print('video is ready')
-              // _controller.addListener(listener);
+            onReady: () {
+              print('video is ready');
             },
           ),
         ),

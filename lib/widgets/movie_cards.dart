@@ -1,4 +1,4 @@
-import 'package:brix_flix/screen/movie_detail.dart';
+import 'package:brix_flix/screen/movie_details/movie_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:brix_flix/utils/fadeRoute.dart';
 

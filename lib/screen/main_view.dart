@@ -71,7 +71,7 @@ class MainView extends StatelessWidget {
     //   ],
     // );
 
-    return Column(
+    return category.movies != null ? Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
@@ -160,6 +160,12 @@ class MainView extends StatelessWidget {
 
 
       ],
+    ) : Center(
+      child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(
+          Theme.of(context).primaryColor
+        ),
+      ),
     );
   }
 }

@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'dart:math';
 import 'package:brix_flix/models/movie.dart';
+import 'package:brix_flix/screen/youtube_video_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart'; 
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class GreyPainter extends CustomPainter {
   @override
@@ -172,7 +170,9 @@ class MovieDetail extends StatelessWidget {
                         ),
                         RaisedButton(
                           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 100),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (context) => VideoScreen(videoId: '', title: movie.title)));
+                          },
                           color: Colors.yellow[700],
                           child: Text(
                             'Watch Trailer',
@@ -188,36 +188,6 @@ class MovieDetail extends StatelessWidget {
           ),
         ),
       )
-
-
-      //             // Container(
-      //             //   padding: EdgeInsets.only(top: titlePadding, bottom: titlePadding),
-      //             //   child: YoutubePlayer(
-      //             //     controller: YoutubePlayerController(
-      //             //       initialVideoId: 'E7fjjA06ETI',
-      //             //       flags: YoutubePlayerFlags(
-      //             //         autoPlay: true,
-      //             //         mute: true,
-      //             //       ),
-      //             //     ),
-      //             //     showVideoProgressIndicator: true,
-      //             //   ),
-      //             //   // child: FluTube(
-      //             //   //   'https://www.youtube.com/watch?v=80pRyn7fZRk',
-      //             //   //   aspectRatio: 16 / 9,
-      //             //   //   autoPlay: true,
-      //             //   //   looping: true,
-      //             //   //   onVideoStart: () {},
-      //             //   //   onVideoEnd: () {},
-      //             //   // ),
-      //             // ),
-
-      //           ],
-      //         )
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

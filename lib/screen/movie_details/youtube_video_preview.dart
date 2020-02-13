@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -33,8 +34,25 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    void _onVideoLoaded () {
+      setState(() {
+        isLoading = false;
+      });
+    }
+
+    Widget _player = YoutubePlayer(
+      controller: _controller,
+      showVideoProgressIndicator: true,
+      progressIndicatorColor: Colors.amber,
+      progressColors: ProgressBarColors(
+        playedColor: Colors.amber,
+        handleColor: Colors.amberAccent,
+      ),
+      onReady: _onVideoLoaded,
+    );
+
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         iconTheme: IconThemeData(
@@ -43,19 +61,17 @@ class _VideoScreenState extends State<VideoScreen> {
         title: Text(title),
       ),
 
-      body: Container(
-        child: Center(
-          child: YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: true,
-            progressIndicatorColor: Colors.amber,
-            progressColors: ProgressBarColors(
-              playedColor: Colors.amber,
-              handleColor: Colors.amberAccent,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Container(
+          child: isLoading == false ? Center(
+            child: _player,
+          ) : Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                Theme.of(context).primaryColor
+              ),
             ),
-            onReady: () {
-              print('video is ready');
-            },
           ),
         ),
       )

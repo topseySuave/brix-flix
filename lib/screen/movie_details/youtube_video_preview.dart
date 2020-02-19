@@ -51,9 +51,14 @@ class _VideoScreenState extends State<VideoScreen> {
       onReady: _onVideoLoaded,
     );
 
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light)
+    );
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: IconThemeData(
           color: Colors.white
@@ -62,7 +67,7 @@ class _VideoScreenState extends State<VideoScreen> {
       ),
 
       body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
+        value: SystemUiOverlayStyle.dark,
         child: Container(
           child: isLoading == false ? Center(
             child: _player,

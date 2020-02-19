@@ -1,3 +1,4 @@
+import 'package:brix_flix/screen/cinema_details.dart';
 import 'package:flutter/material.dart';
 
 class CinemasShowingMovie extends StatelessWidget {
@@ -38,21 +39,28 @@ class CinemasShowingMovie extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: <Widget>[
-                    Card(
-                      color: Colors.blueGrey,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      child: Container(
-                        height: 150.0,
-                        width: 110.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://ericotrips.files.wordpress.com/2018/12/maryland-mall-genesis-deluxe-cinemas.jpg?w=700'),
-                            fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => CinemaDetails()
+                        ));
+                      },
+                      child: Card(
+                        color: Colors.blueGrey,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        child: Container(
+                          height: 150.0,
+                          width: 110.0,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://ericotrips.files.wordpress.com/2018/12/maryland-mall-genesis-deluxe-cinemas.jpg?w=700'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),

@@ -1,7 +1,25 @@
-import 'package:brix_flix/screen/cinema_details.dart';
+// import 'package:brix_flix/screen/cinema_details.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CinemasShowingMovie extends StatelessWidget {
+  final String lat = "6.5673";
+  final String lng = "3.3673";
+
+  void _launchURL() async {
+    final String googleMapsUrl = "comgooglemaps://?center=$lat,$lng";
+    final String appleMapsUrl = "https://maps.apple.com/?q=$lat,$lng";
+
+    if (await canLaunch(googleMapsUrl)) {
+      await launch(googleMapsUrl);
+    }
+    if (await canLaunch(appleMapsUrl)) {
+      await launch(appleMapsUrl, forceSafariVC: false);
+    } else {
+      throw "Couldn't launch URL";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +34,7 @@ class CinemasShowingMovie extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Go out watch',
+                  'Go out and watch',
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -41,9 +59,11 @@ class CinemasShowingMovie extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => CinemaDetails()
-                        ));
+                        print('clicked');
+                        _launchURL();
+                        // Navigator.push(context, MaterialPageRoute(
+                        //   builder: (context) => CinemaDetails()
+                        // ));
                       },
                       child: Card(
                         color: Colors.blueGrey,

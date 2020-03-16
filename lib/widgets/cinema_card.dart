@@ -1,11 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CinemaCard extends StatelessWidget {
+
+  final String lat = "40.765819";
+  final String lng = "-73.975866";
+
+  // final String lat = "6.5673";
+  // final String lng = "3.3673";
+
+  void _launchURL() async {
+    // search for cinemas nearby
+    // geo:0,0?q=cinemas
+
+    // search for cinemas nearby lagos,
+    // and using individuals location for nearby cinemas close to the the individual
+    // geo:6.5244,3.3792?q=cinemas
+
+    // The below Intent will request turn-by-turn navigation to Taronga Zoo, in Sydney Australia:
+    // google.navigation:q=Taronga+Zoo,+Sydney+Australia
+
+    final String googleMapsUrl = "geo:6.5244,3.3792?q=cinemas&zoom=14&views=traffic";
+    final String appleMapsUrl = "geo:0,0?q=1600 Amphitheatre Parkway, Mountain+View, California";
+
+    if (await canLaunch(googleMapsUrl)) {
+      await launch(googleMapsUrl);
+    }
+    if (await canLaunch(appleMapsUrl)) {
+      await launch(appleMapsUrl, forceSafariVC: false);
+    } else {
+      throw "Couldn't launch URL";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {
-        print('cinema location')
+      onTap: () {
+        _launchURL();
+        print('cinema location');
       },
       child: Container(
         height: 230.0,
